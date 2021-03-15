@@ -7,13 +7,19 @@ import json
 app = Flask( # 建立application，設定靜態檔案路徑
     __name__,
     static_folder="static", # 靜態檔案資料夾名稱
-    static_url_path="/static"
+    static_url_path="/"
     ) # 靜態檔案對應的網址路徑(可以只打 / ，就變成像在根目錄底下)
 
 #路由設定：建立路徑 / 對應的處理函式
 @app.route("/") # 1.路由裝飾器（首頁）
-def index(): #2.回應的函式
-    return render_template("index", name="Pulin") #從templates往下看檔案路徑
+def index():
+    return render_template("index.html")
+
+@app.route("/page")
+def page():
+    return render_template("page.html")
+# def index(): #2.回應的函式
+#     return render_template("index", name="Pulin") #從templates往下看檔案路徑
     # return redirect("https://www.google.com.tw") # 導向至google
 #     print("請求方法：", request.method)
 #     print("通訊協定：", request.scheme)
