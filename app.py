@@ -70,9 +70,10 @@ def page():
 #         result += n
 #     return "結果：" + str(result)
 
-@app.route("/show")
+@app.route("/show", methods = ["POST"])
 def show():
-    name = request.args.get("n", "")
+    # name = request.args.get("n", "")
+    name = request.form["n"]
     return name + "，填寫成功"
 
 # 啟動網站伺服器，可以透過port指定阜號
